@@ -4,13 +4,13 @@ public class Salary_declaration {
     private String id;
     private String name;
     private String company;
-    private int cost;
+    private int salary;
 
-    public Salary_declaration(String id, String name, String company, int cost) {
+    public Salary_declaration(String id, String name, String company, int salary) {
         this.id = id;
         this.name = name;
         this.company = company;
-        this.cost = cost;
+        this.salary = salary;
     }
 
     public String getId() {
@@ -25,7 +25,7 @@ public class Salary_declaration {
         return company;
     }
 
-    public int getCost() {
-        return cost;
+    public int getSalary() {
+        return salary;
     }
 }

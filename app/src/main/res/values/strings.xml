@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Faktura hantering AB</string>
+    <string name="app_name">Lönedeklaration AB</string>
+    <string name="declartions">Lönedeklarationer</string>
 </resources>
