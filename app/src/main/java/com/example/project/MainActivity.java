@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 final Snackbar snackbar = Snackbar.make(findViewById(R.id.listView),
                         sd.getName() + " (" + sd.getCompany() + ")" + "\n" + "Salary: " + sd.getSalary(),
                         10000);
-                snackbar.setAction("Close", new View.OnClickListener() {
+                snackbar.setAction("@string/close", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         snackbar.dismiss();
@@ -125,17 +126,17 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
 
-                @Override
+        @Override
         protected void onPostExecute(String json) {
             try {
                 JSONArray jsonArray = (JSONArray) new JSONTokener(json).nextValue();
-                for (int i = 0; i < jsonArray.length(); i++){
+                for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject element = jsonArray.optJSONObject(i);
                     String ID = element.getString("ID");
                     String name = element.getString("name");
                     String company = element.getString("company");
                     int cost = element.getInt("cost");
-                    sds.add(new Salary_declaration(ID,name,company,cost));
+                    sds.add(new Salary_declaration(ID, name, company, cost));
                 }
                 adapter.notifyDataSetChanged();
             } catch (JSONException e) {
@@ -143,4 +144,5 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+    }
 }

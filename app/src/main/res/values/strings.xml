@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Lönedeklaration AB</string>
     <string name="declartions">Lönedeklarationer</string>
+    <string name="close">"Stäng"</string>
 </resources>
