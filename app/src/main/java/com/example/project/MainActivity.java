@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Salary_declaration sd = sds.get(position);
                 final Snackbar snackbar = Snackbar.make(findViewById(R.id.listView),
-                        sd.getName() + " (" + sd.getCompany() + ")" + "\n" + "Salary: " + sd.getSalary(),
+                        sd.getName() + " (" + sd.getCompany() + ")" + "\n" + "Typ: " + sd.getCategory() + " " + "Lön: " + sd.getSalary(),
                         10000);
-                snackbar.setAction("@string/close", new View.OnClickListener() {
+                snackbar.setAction("Stäng", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         snackbar.dismiss();
@@ -135,8 +135,9 @@ public class MainActivity extends AppCompatActivity {
                     String ID = element.getString("ID");
                     String name = element.getString("name");
                     String company = element.getString("company");
+                    String category = element.getString("category");
                     int cost = element.getInt("cost");
-                    sds.add(new Salary_declaration(ID, name, company, cost));
+                    sds.add(new Salary_declaration(ID, name, company, category, cost));
                 }
                 adapter.notifyDataSetChanged();
             } catch (JSONException e) {
