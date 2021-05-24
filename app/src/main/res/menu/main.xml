@@ -9,12 +9,11 @@
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
 
-
-
     <item
         android:id="@+id/action_favorite"
-        android:orderInCategory="300"
+        android:onClick="OnOptionsItemSelected"
         android:icon="@drawable/info_foreground"
-        app:showAsAction="ifRoom"
-        android:title="actionbar"></item>
+        android:orderInCategory="300"
+        android:title="actionbar"
+        app:showAsAction="ifRoom"></item>
 </menu>

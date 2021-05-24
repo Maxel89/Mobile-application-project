@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         mTopToolbar = (Toolbar) findViewById(R.id.menu);
         setSupportActionBar(mTopToolbar);
+
         sds = new ArrayList<Salary_declaration>();
         adapter = new ArrayAdapter<Salary_declaration>(this, android.R.layout.simple_list_item_1, sds);
         new JsonTask().execute("https://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=a18marax");
@@ -66,6 +68,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void OnOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case R.id.action_favorite:
+            showDialogMenu();
+            break;
+        }
+    }
+
+    private void showDialogMenu(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Om företaget");
+        builder.setMessage("Faktura AB tillhandahåller en faktura tjänst för dig som håller på med verksamhet i lagens gråzon (eller rent av olaglig verkashet vi dömmer ingen).");
+        AlertDialog infoDialog = builder.create();
+        infoDialog.show();
+    }
         @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -73,19 +91,6 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-        @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_favorite) {
-
-            AboutDialog about = new AboutDialog();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
     @SuppressLint("StaticFieldLeak")
     private class JsonTask extends AsyncTask<String, String, String> {
 
